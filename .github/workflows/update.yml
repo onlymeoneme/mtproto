@@ -26,7 +26,7 @@ jobs:
       - name: Run parser
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Используем встроенный токен GitHub
-        run: python mtproto_parser.py
+        run: python main.py
 
       - name: Commit and Push changes
         run: |
