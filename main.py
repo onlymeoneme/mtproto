@@ -24,10 +24,12 @@ async def discover_github_sources():
     
     # Стартовые проверенные репозитории
     raw_urls = {
-        "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
+        "https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt",
         "https://raw.githubusercontent.com/TelegramProxy/Proxy-List/main/MTProto.txt",
         "https://raw.githubusercontent.com/Therealwh/MTPproxyLIST/main/verified/proxy_all_tme_verified.txt",
-        "https://raw.githubusercontent.com/Telegram-FZ-LLC/Telegram-Proxy/main/proxies.txt"
+        "https://raw.githubusercontent.com/Telegram-FZ-LLC/Telegram-Proxy/main/proxies.txt",
+        "https://raw.githubusercontent.com/Argh94/Proxy-List/main/MTProto.txt",
+        "https://raw.githubusercontent.com/LoneKingCode/free-proxy-db/main/proxies/mtproto.txt",
     }
 
     try:
