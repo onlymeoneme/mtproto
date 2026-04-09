@@ -1,0 +1,37 @@
+name: Hourly MTProto Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Запуск в 00 минут каждого часа
+  workflow_dispatch:      # Позволяет запустить вручную кнопкой
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write    # Разрешение на запись файла в ваш репозиторий
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install httpx
+
+      - name: Run parser
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Используем встроенный токен GitHub
+        run: python mtproto_parser.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "ProxyBot"
+          git add all_proxies_list.txt
+          git commit -m "Update proxies: $(date)" || exit 0
+          git push
